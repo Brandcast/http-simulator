@@ -20,6 +20,7 @@ function randomCode() {
 }
 
 var body = require('./lib/ipsum');
+var errorPage = require('./lib/error-page');
 
 app.get('/', function (req, res) {
   var code = randomCode();
@@ -29,7 +30,8 @@ app.get('/', function (req, res) {
   } else if (code === 301) {
     res.redirect('/success');
   } else {
-    res.status(code).end();
+    res.header('Content-Type', 'text/html');
+    res.status(code).send(errorPage(code));
   }
 });
 
