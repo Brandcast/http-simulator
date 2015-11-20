@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dan Lynch",
-  "license": "Apache",
+  "license": "Apache Version 2.0",
   "dependencies": {
     "express": "4.13.3",
     "hyperscript": "1.4.7",
