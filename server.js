@@ -3,7 +3,7 @@ var app = express();
 
 var codes = [
     200,
-    302,
+    307,
     500,
     502,
     503,
@@ -31,7 +31,7 @@ app.get('/', function (req, res) {
             res.status(code).send(body());
             break;
 
-        case 302:
+        case 307:
             res.header('Location', '/200');
             res.status(code).end();
             break;
