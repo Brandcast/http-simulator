@@ -1,17 +1,17 @@
 {
   "name": "http-simulator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "http server that randomly simulates failures",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Dan Lynch",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.3",
-    "hyperscript": "^1.4.7",
-    "lorem-ipsum": "^1.0.3",
-    "underscore": "^1.8.3"
+    "express": "4.13.3",
+    "hyperscript": "1.4.7",
+    "lorem-ipsum": "1.0.3",
+    "underscore": "1.8.3"
   }
 }
