@@ -8,7 +8,7 @@ var codes = [
     502,
     503,
     504,
-    -1
+    555
 ];
 
 function randInt(min, max) {
@@ -22,9 +22,7 @@ function randomCode() {
 var body = require('./lib/ipsum');
 var errorPage = require('./lib/error-page');
 
-app.get('/', function (req, res) {
-    var code = randomCode();
-
+function respond (req, res, code) {
     switch(code) {
         case 200:
             res.header('Content-Type', 'text/html');
@@ -36,19 +34,27 @@ app.get('/', function (req, res) {
             res.status(code).end();
             break;
 
-        // http timeout, never returns a response
-        case -1:
+        // http timeout, never return a response
+        case 555:
             break;
 
         default:
             res.header('Content-Type', 'text/html');
+
+            if(codes.indexOf(code) === -1) {
+                code = 404;
+            }
+
             res.status(code).send(errorPage(code));
     }
+}
+
+app.get('/', function (req, res) {
+    respond(req, res, randomCode());
 });
 
-app.get('/200', function(req, res) {
-    res.header('Content-Type', 'text/html');
-    res.status(200).send(body());
+app.get('/:code([0-9]{3}$)/', function(req, res) {
+    respond(req, res, parseInt(req.params.code, 10));
 });
 
 app.get('/style.css', function (req, res) {
@@ -56,7 +62,6 @@ app.get('/style.css', function (req, res) {
 });
 
 var server = app.listen(7777, function () {
-    var host = server.address().address;
     var port = server.address().port;
     console.log('listening on :%s', port);
 });
