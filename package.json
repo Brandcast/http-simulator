@@ -1,6 +1,6 @@
 {
   "name": "http-simulator",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "http server that randomly simulates failures",
   "main": "server.js",
   "scripts": {
