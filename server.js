@@ -11,12 +11,8 @@ var codes = [
     555
 ];
 
-function randInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 function randomCode() {
-    return codes[randInt(0, codes.length-1)];
+    return codes[Math.floor(Math.random() * codes.length)];
 }
 
 var body = require('./lib/ipsum');
